@@ -50,7 +50,7 @@
 //libguess is fully reentrant, using only local stack memory for DFA operations.
 package guess
 
-
+// #cgo pkg-config: libguess
 //#include <libguess/libguess.h>
 import "C"
 
