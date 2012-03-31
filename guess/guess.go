@@ -55,29 +55,29 @@ package guess
 import "C"
 
 import (
-  "unsafe"
+	"unsafe"
 )
 
 const (
-  AR = C.GUESS_REGION_AR // Arabic
-  BL = C.GUESS_REGION_BL // Baltic
-  CN = C.GUESS_REGION_CN // Chinese
-  GR = C.GUESS_REGION_GR // Greek
-  HW = C.GUESS_REGION_HW // Hebrew
-  JP = C.GUESS_REGION_JP // Japanese
-  KR = C.GUESS_REGION_KR // Korean
-  PL = C.GUESS_REGION_PL // Polish
-  RU = C.GUESS_REGION_RU // Russian
-  TW = C.GUESS_REGION_TW // Taiwanese
-  TR = C.GUESS_REGION_TR // Turkish
+	AR = C.GUESS_REGION_AR // Arabic
+	BL = C.GUESS_REGION_BL // Baltic
+	CN = C.GUESS_REGION_CN // Chinese
+	GR = C.GUESS_REGION_GR // Greek
+	HW = C.GUESS_REGION_HW // Hebrew
+	JP = C.GUESS_REGION_JP // Japanese
+	KR = C.GUESS_REGION_KR // Korean
+	PL = C.GUESS_REGION_PL // Polish
+	RU = C.GUESS_REGION_RU // Russian
+	TW = C.GUESS_REGION_TW // Taiwanese
+	TR = C.GUESS_REGION_TR // Turkish
 )
 
 // This employs libguess's DFA-based character set validation rules to ensure
 // that a string is pure UTF-8. GLib's UTF-8 validation functions are broken,
 // for example.
 func ValidateUTF8(buf []byte) bool {
-  x := C.libguess_validate_utf8((*C.char)(unsafe.Pointer(&buf[0])), C.int(len(buf)))
-  return x != 0
+	x := C.libguess_validate_utf8((*C.char)(unsafe.Pointer(&buf[0])), C.int(len(buf)))
+	return x != 0
 }
 
 // This detects a character set.
